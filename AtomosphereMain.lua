@@ -17,7 +17,7 @@ function Atomos:NewTab(Name)
 	TabCount = TabCount + 1
 	local function dragify(Frame)
 		local dragToggle = nil
-		local dragSpeed = .4
+		local dragSpeed = .4 -- You can edit this.
 		local dragInput = nil
 		local dragStart = nil
 		local dragPos = nil
@@ -69,6 +69,7 @@ function Atomos:NewTab(Name)
 	Tab.ZIndex = 2
 	Tab.Image = "http://www.roblox.com/asset/?id=6657363591"
 	Tab.BackgroundTransparency = 1
+	dragify(game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.01):WaitForChild(Name or "NewTab".. TabCount, 0.2))
 	ButtonListing.Name = "ButtonListing"
 	ButtonListing.Parent = Tab
 	ButtonListing.HorizontalAlignment = Enum.HorizontalAlignment.Center
@@ -92,7 +93,6 @@ function Atomos:NewTab(Name)
 		local Move = (game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.05):GetChildren()[TabCount - 1].Position.X.Scale + 0.1513)
 		Tab.Position = UDim2.new(Move, 0, 0.0284167733, 0)
 	end
-	dragify(Tab)
 	local ElementsList = {}
 	function ElementsList:NewButton(str, callback) --Normal Button
 		local Button = Instance.new("TextButton")
