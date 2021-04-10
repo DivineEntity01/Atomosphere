@@ -57,7 +57,7 @@ function Atomos:NewTab(Name)
 	local ElementsList = {}
 	function ElementsList:NewButton(str, callback) --Normal Button
 		local Button = Instance.new("TextButton")
-		TabTitle.BackgroundTransparency = 0 --Make the dark top part visible
+		Tab.BackgroundTransparency = 0 --Make the dark top part visible
 		--str
 		Button.Name = "Button"
 		Button.Parent = Tab
