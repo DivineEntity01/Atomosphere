@@ -1,43 +1,54 @@
 local Atomos = {}
-
+local TabCount = 0
 function Atomos:NewTab(Name)
 --Create MainGUI
-if not game:GetService("Players").DivineEntity01.PlayerGui:WaitForChild("Atomosphere", 0.05) then
+if not game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.05) then
 local Atomosphere = Instance.new("ScreenGui")
 Atomosphere.Name = "Atomosphere"
-Atomosphere.Parent = game.Players.LocalPlayer:WaitForChild("CoreGui")
+Atomosphere.Parent = game:GetService("CoreGui")
 wait(0.05)
 end
+local Main = game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.05)
+TabCount = TabCount + 1
 -------------------------------------------------------------------------------------------------
-	local Tab = Instance.new("ImageLabel")
-	local ButtonListing = Instance.new("UIListLayout")
-	local MaxMinSize = Instance.new("UISizeConstraint")
-	local TabTitle = Instance.new("TextLabel")
-	ButtonListing.Name = "ButtonListing"
-	ButtonListing.Parent = Tab
-	ButtonListing.HorizontalAlignment = Enum.HorizontalAlignment.Center
-	ButtonListing.SortOrder = Enum.SortOrder.LayoutOrder
-	MaxMinSize.Name = "MaxMinSize"
-	MaxMinSize.Parent = Tab
-	MaxMinSize.MaxSize = Vector2.new(150, math.huge)
-	MaxMinSize.MinSize = Vector2.new(125, 0)
-	--Tab Name
-	TabTitle.Name = "TabTitle"
-	TabTitle.Parent = Tab
-	TabTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-	TabTitle.BackgroundTransparency = 1.000
-	TabTitle.Position = UDim2.new(0.13333334, 0, 0, 0)
-	TabTitle.Size = UDim2.new(0.733333349, 0, 1, 0)
-	TabTitle.ZIndex = 2
-	TabTitle.Font = Enum.Font.Highway
-	TabTitle.Text = tostring(Name) or "New Tab"
-	TabTitle.TextColor3 = Color3.fromRGB(188, 189, 208)
-	TabTitle.TextSize = 25.000
-	--Buttons
-	local TabLib = {}
-	--Normal Button
+--Create Tab
+local Tab = Instance.new("ImageLabel")
+local ButtonListing = Instance.new("UIListLayout")
+local MaxMinSize = Instance.new("UISizeConstraint")
+local TabTitle = Instance.new("TextLabel")
+Tab.Name = tostring(Name) or "Tab".. TabCount
+Tab.Parent = Main
+Tab.BackgroundColor3 = Color3.fromRGB(22, 25, 35)
+Tab.BorderSizePixel = 0
+Tab.LayoutOrder = 5
+Tab.Position = UDim2.new(0.0173761956, 0, 0.0284167733, 0)
+Tab.Size = UDim2.new(0.130321458, 0, 0.033829499, 0)
+Tab.ZIndex = 2
+Tab.Image = "http://www.roblox.com/asset/?id=6657363591"
+ButtonListing.Name = "ButtonListing"
+ButtonListing.Parent = Tab
+ButtonListing.HorizontalAlignment = Enum.HorizontalAlignment.Center
+ButtonListing.SortOrder = Enum.SortOrder.LayoutOrder
+MaxMinSize.Name = "MaxMinSize"
+MaxMinSize.Parent = Tab
+MaxMinSize.MaxSize = Vector2.new(150, math.huge)
+MaxMinSize.MinSize = Vector2.new(125, 0)
+TabTitle.Name = "TabTitle"
+TabTitle.Parent = Tab
+TabTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TabTitle.BackgroundTransparency = 1.000
+TabTitle.Position = UDim2.new(0.13333334, 0, 0, 0)
+TabTitle.Size = UDim2.new(0.733333349, 0, 1, 0)
+TabTitle.ZIndex = 2
+TabTitle.Font = Enum.Font.Highway
+TabTitle.Text = tostring(Name) or "NewTab"
+TabTitle.TextColor3 = Color3.fromRGB(188, 189, 208)
+TabTitle.TextSize = 25.000
+if TabCount > 1 then
+	Tab.Position = UDim2.new(Main:GetChildren()[TabCount].X + 0.16, 0, 0.0284167733, 0)
 end
 
+end
 
 
 return Atomos;
