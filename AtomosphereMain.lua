@@ -85,11 +85,11 @@ function Atomos:NewTab(Name)
 		end)
 		--Effect #1a1e2a
 		Button.MouseEnter:Connect(function()
-			local Hover = TS:Create(Button, TweenInfo.new(0.18, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(26, 30, 42)})	
+		local Hover = TS:Create(Button, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(26, 30, 42)})	
 		Hover:Play()
 		end)
 		Button.MouseLeave:Connect(function()
-		local Leeave = TS:Create(Button, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(22, 25, 35)})	
+		local Leeave = TS:Create(Button, TweenInfo.new(0.36, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(22, 25, 35)})	
 		Leeave:Play()
 		end)
 	end
