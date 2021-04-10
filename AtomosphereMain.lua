@@ -1,12 +1,15 @@
 local Atomos = {}
 local TabCount = 0
-if not game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.01) then
-	local Atomosphere = Instance.new("ScreenGui")
-	Atomosphere.Name = "Atomosphere"
-	Atomosphere.Parent = game:GetService("CoreGui")
-elseif game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.01) then
-	game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.01):Destroy()
+local function CreateMain()
+local Atomosphere = Instance.new("ScreenGui")
+Atomosphere.Name = "Atomosphere"
+Atomosphere.Parent = game:GetService("CoreGui")
 end
+if game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.01) then
+game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.01):Destroy()
+end
+CreateMain()
+
 function Atomos:NewTab(Name)
 	local Main = game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.01)
 	TabCount = TabCount + 1
