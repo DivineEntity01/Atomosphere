@@ -15,6 +15,44 @@ CreateMain()
 function Atomos:NewTab(Name)
 	local Main = game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.01)
 	TabCount = TabCount + 1
+	local function dragify(Frame)
+		local dragToggle = nil
+		local dragSpeed = .4 -- You can edit this.
+		local dragInput = nil
+		local dragStart = nil
+		local dragPos = nil
+
+		function updateInput(input)
+			local Delta = input.Position - dragStart
+			local Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
+			game:GetService("TweenService"):Create(Frame, TweenInfo.new(.25), {Position = Position}):Play()
+		end
+
+		Frame.InputBegan:Connect(function(input)
+			if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then
+				dragToggle = true
+				dragStart = input.Position
+				startPos = Frame.Position
+				input.Changed:Connect(function()
+					if (input.UserInputState == Enum.UserInputState.End) then
+						dragToggle = false
+					end
+				end)
+			end
+		end)
+
+		Frame.InputChanged:Connect(function(input)
+			if (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
+				dragInput = input
+			end
+		end)
+
+		game:GetService("UserInputService").InputChanged:Connect(function(input)
+			if (input == dragInput and dragToggle) then
+				updateInput(input)
+			end
+		end)
+	end
 	-------------------------------------------------------------------------------------------------
 	--Create Tab
 	local Tab = Instance.new("ImageLabel")
@@ -54,6 +92,7 @@ function Atomos:NewTab(Name)
 		local Move = (game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.05):GetChildren()[TabCount - 1].Position.X.Scale + 0.1513)
 		Tab.Position = UDim2.new(Move, 0, 0.0284167733, 0)
 	end
+	dragify(Tab)
 	local ElementsList = {}
 	function ElementsList:NewButton(str, callback) --Normal Button
 		local Button = Instance.new("TextButton")
