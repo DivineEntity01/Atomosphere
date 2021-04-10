@@ -16,7 +16,7 @@ local Tab = Instance.new("ImageLabel")
 local ButtonListing = Instance.new("UIListLayout")
 local MaxMinSize = Instance.new("UISizeConstraint")
 local TabTitle = Instance.new("TextLabel")
-Tab.Name = tostring(Name) or "Tab".. TabCount
+Tab.Name = Name or "Tab".. TabCount
 Tab.Parent = Main
 Tab.BackgroundColor3 = Color3.fromRGB(22, 25, 35)
 Tab.BorderSizePixel = 0
@@ -41,7 +41,7 @@ TabTitle.Position = UDim2.new(0.13333334, 0, 0, 0)
 TabTitle.Size = UDim2.new(0.733333349, 0, 1, 0)
 TabTitle.ZIndex = 2
 TabTitle.Font = Enum.Font.Highway
-TabTitle.Text = tostring(Name) or "NewTab"
+TabTitle.Text = Name or "NewTab"
 TabTitle.TextColor3 = Color3.fromRGB(188, 189, 208)
 TabTitle.TextSize = 25.000
 if TabCount > 1 then
