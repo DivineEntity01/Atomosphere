@@ -15,44 +15,6 @@ CreateMain()
 function Atomos:NewTab(Name)
 	local Main = game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.01)
 	TabCount = TabCount + 1
-	local function dragify(Frame)
-		local dragToggle = nil
-		local dragSpeed = .4 -- You can edit this.
-		local dragInput = nil
-		local dragStart = nil
-		local dragPos = nil
-
-		function updateInput(input)
-			local Delta = input.Position - dragStart
-			local Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + Delta.X, startPos.Y.Scale, startPos.Y.Offset + Delta.Y)
-			game:GetService("TweenService"):Create(Frame, TweenInfo.new(.25), {Position = Position}):Play()
-		end
-
-		Frame.InputBegan:Connect(function(input)
-			if (input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch) then
-				dragToggle = true
-				dragStart = input.Position
-				startPos = Frame.Position
-				input.Changed:Connect(function()
-					if (input.UserInputState == Enum.UserInputState.End) then
-						dragToggle = false
-					end
-				end)
-			end
-		end)
-
-		Frame.InputChanged:Connect(function(input)
-			if (input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch) then
-				dragInput = input
-			end
-		end)
-
-		game:GetService("UserInputService").InputChanged:Connect(function(input)
-			if (input == dragInput and dragToggle) then
-				updateInput(input)
-			end
-		end)
-	end
 	-------------------------------------------------------------------------------------------------
 	--Create Tab
 	local Tab = Instance.new("ImageLabel")
@@ -69,9 +31,7 @@ function Atomos:NewTab(Name)
 	Tab.ZIndex = 2
 	Tab.Image = "http://www.roblox.com/asset/?id=6657363591"
 	Tab.BackgroundTransparency = 1
-	for _,v in pairs(game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.01):GetChildren()) do
-		dragify(v)
-	end
+	
 	ButtonListing.Name = "ButtonListing"
 	ButtonListing.Parent = Tab
 	ButtonListing.HorizontalAlignment = Enum.HorizontalAlignment.Center
@@ -114,7 +74,7 @@ function Atomos:NewTab(Name)
 		Button.TextWrapped = true
 		--Callback
 		Button.MouseButton1Click:Connect(function()
-			callback()
+			pcall(callback())
 			local Clicked = TS:Create(Button, TweenInfo.new(0.2, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {TextColor3 = Color3.fromRGB(240, 238, 249)})
 			local Return = TS:Create(Button, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextColor3 = Color3.fromRGB(188, 189, 208)})
 			Clicked:Play()
@@ -122,6 +82,15 @@ function Atomos:NewTab(Name)
 			wait(0.1)
 			Return:Play()
 			end)
+		end)
+		--Effect #1a1e2a
+		Button.MouseEnter:Connect(function()
+			local Hover = TS:Create(Button, TweenInfo.new(0.18, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(26, 30, 42)})	
+		Hover:Play()
+		end)
+		Button.MouseLeave:Connect(function()
+		local Leeave = TS:Create(Button, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(22, 25, 35)})	
+		Leeave:Play()
 		end)
 	end
 	--
