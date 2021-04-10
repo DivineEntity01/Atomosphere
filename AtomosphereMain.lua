@@ -4,7 +4,7 @@ if not game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.01) then
 	local Atomosphere = Instance.new("ScreenGui")
 	Atomosphere.Name = "Atomosphere"
 	Atomosphere.Parent = game:GetService("CoreGui")
-else
+elseif game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.01) then
 	game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.01):Destroy()
 end
 function Atomos:NewTab(Name)
