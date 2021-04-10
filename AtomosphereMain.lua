@@ -69,7 +69,9 @@ function Atomos:NewTab(Name)
 	Tab.ZIndex = 2
 	Tab.Image = "http://www.roblox.com/asset/?id=6657363591"
 	Tab.BackgroundTransparency = 1
-	dragify(game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.01):WaitForChild(Name or "NewTab".. TabCount, 0.2))
+	for _,v in pairs(game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.01):GetChildren()) do
+		dragify(v)
+	end
 	ButtonListing.Name = "ButtonListing"
 	ButtonListing.Parent = Tab
 	ButtonListing.HorizontalAlignment = Enum.HorizontalAlignment.Center
