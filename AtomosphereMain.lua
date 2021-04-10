@@ -1,7 +1,8 @@
 local Atomos = {}
+local TabCount
 if not game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.05) then
-TabCount = 0
 local Atomosphere = Instance.new("ScreenGui")
+TabCount = 0
 Atomosphere.Name = "Atomosphere"
 Atomosphere.Parent = game:GetService("CoreGui")
 wait(0.05)
