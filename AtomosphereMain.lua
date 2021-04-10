@@ -45,7 +45,8 @@ TabTitle.Text = tostring(Name) or "NewTab"
 TabTitle.TextColor3 = Color3.fromRGB(188, 189, 208)
 TabTitle.TextSize = 25.000
 if TabCount > 1 then
-	Tab.Position = UDim2.new(Main:GetChildren()[TabCount].X + 0.16, 0, 0.0284167733, 0)
+	local Move = (game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.05):GetChildren()[TabCount - 1].Position.X.Scale + 0.16)
+	Tab.Position = UDim2.new(Move, 0, 0.0284167733, 0)
 end
 
 end
