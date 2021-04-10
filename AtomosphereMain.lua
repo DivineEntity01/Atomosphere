@@ -45,7 +45,7 @@ function Atomos:NewTab(Name)
 	TabTitle.Size = UDim2.new(0.733333349, 0, 1, 0)
 	TabTitle.ZIndex = 2
 	TabTitle.Font = Enum.Font.Highway
-	TabTitle.Text = Name or "NewTab"
+	TabTitle.Text = Name or "NewTab".. TabCount
 	TabTitle.TextColor3 = Color3.fromRGB(188, 189, 208)
 	TabTitle.TextSize = 25.000
 	if TabCount > 1 then
