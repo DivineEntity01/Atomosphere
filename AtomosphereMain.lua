@@ -28,7 +28,7 @@ function Atomos:NewTab(Name)
 	Tab.Size = UDim2.new(0.130321458, 0, 0.033829499, 0)
 	Tab.ZIndex = 2
 	Tab.Image = "http://www.roblox.com/asset/?id=6657363591"
-	Tab.ImageTransparency = 1
+	Tab.BackgroundTransparency = 1
 	ButtonListing.Name = "ButtonListing"
 	ButtonListing.Parent = Tab
 	ButtonListing.HorizontalAlignment = Enum.HorizontalAlignment.Center
