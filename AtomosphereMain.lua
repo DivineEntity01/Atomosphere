@@ -1,12 +1,12 @@
 local Atomos = {}
 local TabCount = 0
+if game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.001) then
+game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.001):Destroy()
+end
 local function CreateMain()
 local Atomosphere = Instance.new("ScreenGui")
 Atomosphere.Name = "Atomosphere"
 Atomosphere.Parent = game:GetService("CoreGui")
-end
-if game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.01) then
-game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.01):Destroy()
 end
 CreateMain()
 
