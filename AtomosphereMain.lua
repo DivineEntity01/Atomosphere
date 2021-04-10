@@ -1,12 +1,14 @@
 local Atomos = {}
 local TabCount = 0
+local TS = game:GetService("TweenService")
+
 if game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.001) then
-game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.001):Destroy()
+	game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.001):Destroy()
 end
 local function CreateMain()
-local Atomosphere = Instance.new("ScreenGui")
-Atomosphere.Name = "Atomosphere"
-Atomosphere.Parent = game:GetService("CoreGui")
+	local Atomosphere = Instance.new("ScreenGui")
+	Atomosphere.Name = "Atomosphere"
+	Atomosphere.Parent = game:GetService("CoreGui")
 end
 CreateMain()
 
@@ -52,8 +54,36 @@ function Atomos:NewTab(Name)
 		local Move = (game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.05):GetChildren()[TabCount - 1].Position.X.Scale + 0.1513)
 		Tab.Position = UDim2.new(Move, 0, 0.0284167733, 0)
 	end
-
+	local ElementsList = {}
+	function ElementsList:NewButton(str, callback) --Normal Button
+		local Button = Instance.new("TextButton")
+		TabTitle.BackgroundTransparency = 0 --Make the dark top part visible
+		--str
+		Button.Name = "Button"
+		Button.Parent = Tab
+		Button.BackgroundColor3 = Color3.fromRGB(22, 25, 35)
+		Button.BorderSizePixel = 0
+		Button.Position = UDim2.new(0, 0, 1.00000012, 0)
+		Button.Size = UDim2.new(1, 0, 1, 0)
+		Button.AutoButtonColor = false
+		Button.Font = Enum.Font.Highway
+		Button.Text = str or "NewButton"
+		Button.TextColor3 = Color3.fromRGB(188, 189, 208)
+		Button.TextSize = 20.000
+		Button.TextWrapped = true
+		--Callback
+		Button.MouseButton1Click:Connect(function()
+			callback()
+			local Clicked = TS:Create(Button, TweenInfo.new(0.2, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {TextColor3 = Color3.fromRGB(240, 238, 249)})
+			local Return = TS:Create(Button, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextColor3 = Color3.fromRGB(188, 189, 208)})
+			Clicked:Play()
+			Clicked.Completed:Connect(function(playbackState)
+			wait(0.1)
+			Return:Play()
+			end)
+		end)
+	end
+	--
+	return ElementsList
 end
-
-
 return Atomos;
