@@ -17,7 +17,7 @@ function Atomos:NewTab(Name)
 	TabCount = TabCount + 1
 	local function dragify(Frame)
 		local dragToggle = nil
-		local dragSpeed = .4 -- You can edit this.
+		local dragSpeed = .4
 		local dragInput = nil
 		local dragStart = nil
 		local dragPos = nil
