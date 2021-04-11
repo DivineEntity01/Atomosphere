@@ -309,7 +309,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		SliderDrag.AutoButtonColor = false
 		SliderDrag.Image = "http://www.roblox.com/asset/?id=6661762894"
 		Container.Name = "Container"
-		Container.Parent = game.StarterGui.Atomosphere["Tab1"].Slider.SliderBG.SliderLine.SliderDrag
+		Container.Parent = SliderDrag
 		Container.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Container.BackgroundTransparency = 1.000
 		Container.Position = UDim2.new(-0.240999967, 0, -1.39999998, 0)
