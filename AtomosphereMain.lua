@@ -200,9 +200,15 @@ function Atomos:NewTab(Name)
 			Entered = true
 		end)
 		KeyButton.MouseLeave:Connect(function()
-			local Leeave = TS:Create(KeyButton, TweenInfo.new(0.36, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(26, 30, 42)})	
+			local Leeave = TS:Create(KeyButton, TweenInfo.new(0.36, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(22, 25, 35)})	
 			Leeave:Play()
 			wait(0.05)
+			if not Detect then
+				local SlideIn = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {Position = UDim2.new(0.659, 0, 0, 0)})
+				SlideIn:Play()
+				Entered = false
+			end
+			wait(1)
 			if not Detect then
 				local SlideIn = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {Position = UDim2.new(0.659, 0, 0, 0)})
 				SlideIn:Play()
@@ -213,7 +219,7 @@ function Atomos:NewTab(Name)
 			if not Entered then
 			else
 			wait(0.03)
-			local Hover = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(26, 30, 42)})	
+			local Hover = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(31, 32, 42)})	
 			local SlideOut = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(1, 0, 0, 0)})
 			SlideOut:Play()
 			Hover:Play()
