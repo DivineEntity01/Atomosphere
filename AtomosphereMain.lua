@@ -74,7 +74,10 @@ function Atomos:NewTab(Name)
 		Button.TextWrapped = true
 		--Callback
 		Button.MouseButton1Click:Connect(function()
-			pcall(callback())
+			local s, e = pcall(callback)
+			if e then
+			    print(e)
+			end
 			local Clicked = TS:Create(Button, TweenInfo.new(0.2, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {TextColor3 = Color3.fromRGB(240, 238, 249)})
 			local Return = TS:Create(Button, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextColor3 = Color3.fromRGB(188, 189, 208)})
 			Clicked:Play()
