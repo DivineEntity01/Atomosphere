@@ -265,7 +265,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		local SliderText = Instance.new("TextLabel")
 		local Container = Instance.new("Frame")
 		local RatioConstraint = Instance.new("UIAspectRatioConstraint")
-		Slider.Name = "DragSlider" or str
+		Slider.Name = str or "DragSlider"
 		Slider.Parent = Tab
 		Slider.BackgroundColor3 = Color3.fromRGB(22, 25, 35)
 		Slider.BorderSizePixel = 0
@@ -274,7 +274,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		Slider.AutoButtonColor = false
 		Slider.ZIndex = 4
 		Slider.Font = Enum.Font.Highway
-		Slider.Text = "DragSlider" or str
+		Slider.Text = str or "DragSlider"
 		Slider.TextColor3 = Color3.fromRGB(188, 189, 208)
 		Slider.TextSize = 20.000
 		Slider.TextWrapped = true
@@ -323,7 +323,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		ValueBG.BackgroundTransparency = 1.000
 		ValueBG.BorderSizePixel = 0
 		ValueBG.ClipsDescendants = true
-		ValueBG.Position = UDim2.new(-0.100355983, 0, -0.00999975204, 0)
+		ValueBG.Position = UDim2.new(-0.100355983, 1, -0.00999975204, 0)
 		ValueBG.Size = UDim2.new(1.20038807, 0, 1.00999999, 0)
 		ValueBG.ZIndex = 5
 		ValueBG.Image = "http://www.roblox.com/asset/?id=6661850089"
@@ -378,22 +378,22 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		SliderDrag.InputEnded:Connect(function(input)
 			if input.UserInputType == Enum.UserInputType.MouseButton1 then
 				dragging = false
-				local function Two()
+				local function Two1()
 				local DraggingOff = TS:Create(SliderLine, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {BackgroundColor3 = Color3.fromRGB(255, 20, 25)})
 				local DraggingOffT = TS:Create(SliderLine, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {BackgroundTransparency = 1})
 				DraggingOff:Play()
 				DraggingOffT:Play()	
 				end
-				local function One()
+				local function One1()
 				local Hide = TS:Create(ValueBG, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Position = UDim2.new(0, 0, 1, 0, 0)})
 				local Revert = TS:Create(ValueBG, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {ImageColor3 = Color3.fromRGB(255, 255, 255)})
 				Revert:Play()	
 				wait(0.15)
 				Hide:Play()
 				end
-				local onecoro, twocoro = coroutine.create(One), coroutine.create(Two)
-				coroutine.resume(One)
-				coroutine.resume(Two)
+				local onecoro, twocoro = coroutine.create(One1), coroutine.create(Two1)
+				coroutine.resume(One1)
+				coroutine.resume(Two1)
 			end
 		end)
 		game:GetService("UserInputService").InputChanged:Connect(function(input)
