@@ -82,9 +82,9 @@ function Atomos:NewTab(Name)
 			local Clicked = TS:Create(Button, TweenInfo.new(0.2, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {TextColor3 = Color3.fromRGB(240, 238, 249)})
 			local Return = TS:Create(Button, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextColor3 = Color3.fromRGB(188, 189, 208)})
 			Clicked:Play()
-			Clicked.Completed:Connect(function(playbackState)
-				wait(0.1)
-				Return:Play()
+			Clicked.Completed:Connect(function()
+			wait(0.1)
+			Return:Play()
 			end)
 		end)
 		--Effect
@@ -115,9 +115,8 @@ function Atomos:NewTab(Name)
 		KeyButton.TextWrapped = true
 		local KeyBind = Instance.new("TextButton")
 		local UICorner = Instance.new("UICorner")
-		local Detect = false
+		local Detector = Instance.new("Frame")
 		local Changing = false
-		local Entered = false
 		if key then
 		key = key:sub(1,1):upper() .. key:sub(2)
 		if key == "Rightalt" or "Leftalt" then
@@ -140,6 +139,12 @@ function Atomos:NewTab(Name)
 		KeyBind.TextColor3 = Color3.fromRGB(172, 172, 172)
 		KeyBind.TextSize = 12.000
 		KeyBind.TextWrapped = true
+		Detector.Name = "Detector"
+		Detector.Parent = KeyButton
+		Detector.BackgroundColor3 = Color3.fromRGB(40, 42, 54)
+		Detector.BackgroundTransparency = 1.000
+		Detector.Size = UDim2.new(1.33333337, 0, 1, 0)
+		Detector.ZIndex = -10
 		UICorner.CornerRadius = UDim.new(0.200000003, 0)
 		UICorner.Parent = KeyBind
 		--Callback
@@ -150,21 +155,26 @@ function Atomos:NewTab(Name)
 			local Return = TS:Create(KeyBind, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextColor3 = Color3.fromRGB(188, 189, 208)})
 			KeyBind.Text = "..."
 			Changing = true
-			UserInputService.InputBegan:Connect(function(Input , GPE)
-				if Changing then
-				KeyBind.Text = string.sub(tostring(Input.KeyCode), 14)
-				key = string.sub(tostring(Input.KeyCode), 14)
-				local SlideIn = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {Position = UDim2.new(0.659, 0, 0, 0)})
-				SlideIn:Play()
-				Changing = false
-				end
-			end)
 			Clicked:Play()
 			Clicked.Completed:Connect(function(playbackState)
 				wait(0.1)
 				Return:Play()
 			end)
+			UserInputService.InputBegan:Connect(function(Input , GPE)
+			if Changing then
+			KeyBind.Text = string.sub(tostring(Input.KeyCode), 14)
+			key = string.sub(tostring(Input.KeyCode), 14)
+			local SlideIn = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {Position = UDim2.new(0.659, 0, 0, 0)})
+			SlideIn:Play()
+			Changing = false
+			Clicked:Play()
+			Clicked.Completed:Connect(function()
+			wait(0.1)
+			Return:Play()
 			end)
+			end
+			end)
+		end)	
 		end
 			--KeyBind Fire
 		if key then
@@ -193,50 +203,32 @@ function Atomos:NewTab(Name)
 		end)
 		--
 		--Effect
+			--Button
 		KeyButton.MouseEnter:Connect(function()
 			local Hover = TS:Create(KeyButton, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(26, 30, 42)})	
+			Hover:Play()
 			local SlideOut = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(1, 0, 0, 0)})
 			SlideOut:Play()
-			Hover:Play()
-			wait(0.1)
-			Entered = true
 		end)
 		KeyButton.MouseLeave:Connect(function()
-			local Leeave = TS:Create(KeyButton, TweenInfo.new(0.36, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(22, 25, 35)})	
-			Leeave:Play()
-			wait(0.05)
-			if not Detect then
-				local SlideIn = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {Position = UDim2.new(0.659, 0, 0, 0)})
-				SlideIn:Play()
-				Entered = false
-			end
-			wait(1)
-			if not Detect then
-				local SlideIn = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {Position = UDim2.new(0.659, 0, 0, 0)})
-				SlideIn:Play()
-				Entered = false
-			end
+			local Leave = TS:Create(KeyButton, TweenInfo.new(0.36, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(22, 25, 35)})	
+			Leave:Play()
 		end)
+			--KeyBind
 		KeyBind.MouseEnter:Connect(function()
-			if not Entered then
-			else
-			wait(0.03)
-			local Hover = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(31, 32, 42)})	
-			local SlideOut = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(1, 0, 0, 0)})
-			SlideOut:Play()
+			local Hover = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(35, 37, 48)})	
 			Hover:Play()
-			Detect = true
-			end
 		end)
 		KeyBind.MouseLeave:Connect(function()
-			if not Entered or not Detect or Changing then
-			else
-			local Leaave = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {BackgroundColor3 = Color3.fromRGB(40, 42, 54)})	
+			local Hover = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(40, 42, 54)})	
+			Hover:Play()
+		end)
+			--Detector
+		Detector.MouseLeave:Connect(function()
+			local Hover = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(40, 42, 54)})	
+			Hover:Play()
 			local SlideIn = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {Position = UDim2.new(0.659, 0, 0, 0)})
 			SlideIn:Play()
-			Leaave:Play()
-			Detect = false
-			end
 		end)
 		--
 	end
