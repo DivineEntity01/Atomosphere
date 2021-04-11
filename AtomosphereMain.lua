@@ -117,6 +117,7 @@ function Atomos:NewTab(Name)
 		local UICorner = Instance.new("UICorner")
 		local Detect = false
 		local Changing = false
+		local Entered = false
 		if key then
 		key = key:sub(1,1):upper() .. key:sub(2)
 		if key == "Rightalt" or "Leftalt" then
@@ -164,6 +165,7 @@ function Atomos:NewTab(Name)
 			end)
 		end
 			--KeyBind Fire
+		if key then
 		UserInputService.InputBegan:Connect(function(input, gp) -- when player presses a key
 			if input.KeyCode == Enum.KeyCode[key] and not gp and not Changing then
 				local s, f = pcall(callback)
@@ -171,7 +173,8 @@ function Atomos:NewTab(Name)
 					print("UserError: ", f)
 				end
 			end
-		end)
+			end)
+		end
 			--Button
 		KeyButton.MouseButton1Click:Connect(function()
 			local s, f = pcall(callback)
@@ -193,28 +196,39 @@ function Atomos:NewTab(Name)
 			local SlideOut = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(1, 0, 0, 0)})
 			SlideOut:Play()
 			Hover:Play()
+			wait(0.1)
+			Entered = true
 		end)
 		KeyButton.MouseLeave:Connect(function()
 			local Leeave = TS:Create(KeyButton, TweenInfo.new(0.36, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(26, 30, 42)})	
 			Leeave:Play()
 			wait(0.05)
 			if not Detect then
-				
+				local SlideIn = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {Position = UDim2.new(0.659, 0, 0, 0)})
+				SlideIn:Play()
+				Entered = false
 			end
 		end)
 		KeyBind.MouseEnter:Connect(function()
-			Detect = true
+			if not Entered then
+			else
+			wait(0.03)
 			local Hover = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(26, 30, 42)})	
 			local SlideOut = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(1, 0, 0, 0)})
 			SlideOut:Play()
 			Hover:Play()
+			Detect = true
+			end
 		end)
 		KeyBind.MouseLeave:Connect(function()
-			Detect = false
+			if not Entered then
+			else
 			local Leaave = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {BackgroundColor3 = Color3.fromRGB(40, 42, 54)})	
 			local SlideIn = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {Position = UDim2.new(0.659, 0, 0, 0)})
 			SlideIn:Play()
 			Leaave:Play()
+			Detect = false
+			end
 		end)
 		--
 	end
