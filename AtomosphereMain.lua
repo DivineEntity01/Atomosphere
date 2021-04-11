@@ -323,11 +323,11 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		ValueBG.BackgroundTransparency = 1.000
 		ValueBG.BorderSizePixel = 0
 		ValueBG.ClipsDescendants = true
-		ValueBG.Position =UDim2.new(-0.100355983, 0, 1, 0)
+		ValueBG.Position = UDim2.new(-0.100355983, 0, 1, 0)
 		ValueBG.Size = UDim2.new(1.20038807, 0, 1.00999999, 0)
 		ValueBG.ZIndex = 5
 		ValueBG.Image = "http://www.roblox.com/asset/?id=6661850089"
-		ValueBG.ScaleType = Enum.ScaleType.Crop
+		ValueBG.ScaleType = Enum.ScaleType.Fit
 		SliderText.Name = "SliderText"
 		SliderText.Parent = ValueBG
 		SliderText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -359,12 +359,12 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 				dragging = true
 				local function Two()
 				local DraggingOn = TS:Create(SliderLine, TweenInfo.new(0.17, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(255, 178, 178)})
-				local DraggingOnT = TS:Create(SliderLine, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 0.8})
+				local DraggingOnT = TS:Create(SliderLine, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {BackgroundTransparency = 0.4})
 				DraggingOn:Play()
 				DraggingOnT:Play()	
 				end	
 				local function One()
-				local Show = TS:Create(ValueBG, TweenInfo.new(0.23, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(0, 0, 0, 0)})
+				local Show = TS:Create(ValueBG, TweenInfo.new(0.23, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(-0.100355983, 0, 0, 0)})
 				local Change = TS:Create(ValueBG, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {ImageColor3 = Color3.fromRGB(129, 255, 234)})
 				Show:Play()	
 				wait(0.05)
@@ -385,7 +385,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 				DraggingOffT:Play()	
 				end
 				local function One()
-				local Hide = TS:Create(ValueBG, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Position = UDim2.new(0, 0, 1, 0)})
+						local Hide = TS:Create(ValueBG, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Position = UDim2.new(-0.100355983, 0, 1, 0)})
 				local Revert = TS:Create(ValueBG, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {ImageColor3 = Color3.fromRGB(255, 255, 255)})
 				Revert:Play()	
 				wait(0.15)
