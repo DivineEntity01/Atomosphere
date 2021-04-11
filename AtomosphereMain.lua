@@ -153,7 +153,7 @@ function Atomos:NewTab(Name)
 		KeyBind.MouseButton1Click:Connect(function()
 			local Clicked = TS:Create(KeyBind, TweenInfo.new(0.2, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {TextColor3 = Color3.fromRGB(240, 238, 249)})
 			local Return = TS:Create(KeyBind, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextColor3 = Color3.fromRGB(188, 189, 208)})
-			KeyBind.Text = "..."
+			KeyBind.Text = "[...]"
 			Changing = true
 			Clicked:Play()
 			Clicked.Completed:Connect(function(playbackState)
@@ -164,8 +164,6 @@ function Atomos:NewTab(Name)
 			if Changing then
 			KeyBind.Text = string.sub(tostring(Input.KeyCode), 14)
 			key = string.sub(tostring(Input.KeyCode), 14)
-			local SlideIn = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {Position = UDim2.new(0.659, 0, 0, 0)})
-			SlideIn:Play()
 			Changing = false
 			Clicked:Play()
 			Clicked.Completed:Connect(function()
