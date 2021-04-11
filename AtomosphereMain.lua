@@ -154,6 +154,8 @@ function Atomos:NewTab(Name)
 				if Changing then
 				KeyBind.Text = string.sub(tostring(Input.KeyCode), 14)
 				key = string.sub(tostring(Input.KeyCode), 14)
+				local SlideIn = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {Position = UDim2.new(0.659, 0, 0, 0)})
+				SlideIn:Play()
 				Changing = false
 				end
 			end)
@@ -227,7 +229,7 @@ function Atomos:NewTab(Name)
 			end
 		end)
 		KeyBind.MouseLeave:Connect(function()
-			if not Entered then
+			if not Entered or not Detect or Changing then
 			else
 			local Leaave = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {BackgroundColor3 = Color3.fromRGB(40, 42, 54)})	
 			local SlideIn = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {Position = UDim2.new(0.659, 0, 0, 0)})
