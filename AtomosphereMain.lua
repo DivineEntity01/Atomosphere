@@ -371,29 +371,29 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 				Change:Play()
 				end	
 				local onecoro, twocoro = coroutine.create(One), coroutine.create(Two)
-				coroutine.resume(One)
-				coroutine.resume(Two)
+				coroutine.resume(onecoro)
+				coroutine.resume(twocoro)
 			end
 		end)
 		SliderDrag.InputEnded:Connect(function(input)
 			if input.UserInputType == Enum.UserInputType.MouseButton1 then
 				dragging = false
-				local function Two1()
+				local function Two()
 				local DraggingOff = TS:Create(SliderLine, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {BackgroundColor3 = Color3.fromRGB(255, 20, 25)})
 				local DraggingOffT = TS:Create(SliderLine, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {BackgroundTransparency = 1})
 				DraggingOff:Play()
 				DraggingOffT:Play()	
 				end
-				local function One1()
+				local function One()
 				local Hide = TS:Create(ValueBG, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Position = UDim2.new(0, 0, 1, 0, 0)})
 				local Revert = TS:Create(ValueBG, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {ImageColor3 = Color3.fromRGB(255, 255, 255)})
 				Revert:Play()	
 				wait(0.15)
 				Hide:Play()
 				end
-				local onecoro, twocoro = coroutine.create(One1), coroutine.create(Two1)
-				coroutine.resume(One1)
-				coroutine.resume(Two1)
+				local onecoro, twocoro = coroutine.create(One), coroutine.create(Two)
+				coroutine.resume(onecoro)
+				coroutine.resume(twocoro)
 			end
 		end)
 		game:GetService("UserInputService").InputChanged:Connect(function(input)
