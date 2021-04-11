@@ -264,6 +264,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		local ValueBG = Instance.new("ImageLabel")
 		local SliderText = Instance.new("TextLabel")
 		local Container = Instance.new("Frame")
+		local RatioConstraint = Instance.new("UIAspectRatioConstraint")
 		Slider.Name = "DragSlider" or str
 		Slider.Parent = Tab
 		Slider.BackgroundColor3 = Color3.fromRGB(22, 25, 35)
@@ -310,21 +311,23 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		SliderDrag.Image = "http://www.roblox.com/asset/?id=6661762894"
 		Container.Name = "Container"
 		Container.Parent = SliderDrag
-		Container.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Container.BackgroundColor3 = Color3.fromRGB(40, 42, 54)
 		Container.BackgroundTransparency = 1.000
+		Container.Position = UDim2.new(-0.240999997, 0, -1.20000005, 0)
+		Container.Size = UDim2.new(1.44599998, 0, 1.25, 0)
+		Container.ZIndex = 1
 		Container.ClipsDescendants = true
-		Container.Position = UDim2.new(-0.240999967, 0, -1.39999998, 0)
-		Container.Size = UDim2.new(1.44646776, 0, 1.39999998, 0)
 		ValueBG.Name = "ValueBG"
 		ValueBG.Parent = Container
-		ValueBG.BackgroundColor3 = Color3.fromRGB(129, 255, 234)
+		ValueBG.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		ValueBG.BackgroundTransparency = 1.000
 		ValueBG.BorderSizePixel = 0
 		ValueBG.ClipsDescendants = true
-		ValueBG.Size = UDim2.new(1, 0, 0.892857134, 0)
+		ValueBG.Position = UDim2.new(-0.100355983, 0, -0.00999975204, 0)
+		ValueBG.Size = UDim2.new(1.20038807, 0, 1.00999999, 0)
 		ValueBG.ZIndex = 5
 		ValueBG.Image = "http://www.roblox.com/asset/?id=6661850089"
-		ValueBG.ScaleType = Enum.ScaleType.Fit
+		ValueBG.ScaleType = Enum.ScaleType.Crop
 		SliderText.Name = "SliderText"
 		SliderText.Parent = ValueBG
 		SliderText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -338,6 +341,9 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		SliderText.TextScaled = true
 		SliderText.TextSize = 15.000
 		SliderText.TextWrapped = true
+		RatioConstraint.Name = "RatioConstraint"
+		RatioConstraint.Parent = ValueBG
+		RatioConstraint.AspectRatio = 1.426
 		--Callback
 		if min and max and def and callback then
 		SliderText.Text = tostring(def)
@@ -379,7 +385,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 				DraggingOffT:Play()	
 				end
 				local function One()
-				local Hide = TS:Create(ValueBG, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Position = UDim2.new(0, 0, 0.9, 0, 0)})
+				local Hide = TS:Create(ValueBG, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Position = UDim2.new(0, 0, 1, 0, 0)})
 				local Revert = TS:Create(ValueBG, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {ImageColor3 = Color3.fromRGB(255, 255, 255)})
 				Revert:Play()	
 				wait(0.15)
