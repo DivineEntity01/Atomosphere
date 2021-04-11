@@ -88,7 +88,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		Button.Position = UDim2.new(0, 0, 1.00000012, 0)
 		Button.Size = UDim2.new(1, 0, 1, 0)
 		Button.AutoButtonColor = false
-		Button.ZIndex = 4
+		Button.ZIndex = 7
 		Button.Font = Enum.Font.Highway
 		Button.Text = str or "NewButton"
 		Button.TextColor3 = Color3.fromRGB(188, 189, 208)
@@ -129,7 +129,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		KeyButton.Position = UDim2.new(0, 0, 1.00000012, 0)
 		KeyButton.Size = UDim2.new(1, 0, 1, 0)
 		KeyButton.AutoButtonColor = false
-		KeyButton.ZIndex = 4
+		KeyButton.ZIndex = 7
 		KeyButton.Font = Enum.Font.Highway
 		KeyButton.Text = str or "KeyButton"
 		KeyButton.TextColor3 = Color3.fromRGB(188, 189, 208)
@@ -247,6 +247,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		Detector.MouseLeave:Connect(function()
 			local Leave = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(40, 42, 54)})	
 			Leave:Play()
+			
 			local SlideIn = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {Position = UDim2.new(0.659, 0, 0, 0)})
 			SlideIn:Play()
 		end)
@@ -272,7 +273,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		Slider.Position = UDim2.new(0, 0, 1.00000012, 0)
 		Slider.Size = UDim2.new(1, 0, 1, 0)
 		Slider.AutoButtonColor = false
-		Slider.ZIndex = 4
+		Slider.ZIndex = 7
 		Slider.Font = Enum.Font.Highway
 		Slider.Text = str or "DragSlider"
 		Slider.TextColor3 = Color3.fromRGB(188, 189, 208)
@@ -362,6 +363,8 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 			SlideIn:Play()
 			local Leave = TS:Create(SliderBG, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(40, 42, 54)})	
 			Leave:Play()
+			local Hide = TS:Create(ValueBG, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Position = UDim2.new(-0.100355983, 0, 1, 0)})
+			Hide:Play()
 		end)
 		--SliderBG
 		SliderBG.MouseEnter:Connect(function()
@@ -374,7 +377,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		end)
 		--SliderDrag
 		SliderDrag.MouseEnter:Connect(function()
-			local Show = TS:Create(ValueBG, TweenInfo.new(0.23, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(-0.100355983, 0, 0, 0)})
+			local Show = TS:Create(ValueBG, TweenInfo.new(0.33, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {Position = UDim2.new(-0.100355983, 0, 0, 0)})
 			Show:Play()
 		end)
 		SliderDrag.MouseLeave:Connect(function()
