@@ -372,6 +372,18 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 			local Leave = TS:Create(SliderBG, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(40, 42, 54)})	
 			Leave:Play()
 		end)
+		--SliderDrag
+		SliderDrag.MouseEnter:Connect(function()
+			local Show = TS:Create(ValueBG, TweenInfo.new(0.23, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {Position = UDim2.new(-0.100355983, 0, 0, 0)})
+			Show:Play()
+		end)
+		SliderDrag.MouseLeave:Connect(function()
+			if not dragging then
+			local Hide = TS:Create(ValueBG, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Position = UDim2.new(-0.100355983, 0, 1, 0)})
+			Hide:Play()
+			end
+		end)
+		--
 		--Callback
 		if min and max and def and callback then
 		SliderText.Text = tostring(def)
@@ -413,7 +425,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 				DraggingOffT:Play()	
 				end
 				local function One()
-						local Hide = TS:Create(ValueBG, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Position = UDim2.new(-0.100355983, 0, 1, 0)})
+				local Hide = TS:Create(ValueBG, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Position = UDim2.new(-0.100355983, 0, 1, 0)})
 				local Revert = TS:Create(ValueBG, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {ImageColor3 = Color3.fromRGB(255, 255, 255)})
 				Revert:Play()	
 				wait(0.15)
