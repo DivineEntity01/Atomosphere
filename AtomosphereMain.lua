@@ -323,7 +323,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		ValueBG.BackgroundTransparency = 1.000
 		ValueBG.BorderSizePixel = 0
 		ValueBG.ClipsDescendants = true
-		ValueBG.Position = UDim2.new(-0.100355983, 1, -0.00999975204, 0)
+		ValueBG.Position =UDim2.new(-0.100355983, 0, 1, 0)
 		ValueBG.Size = UDim2.new(1.20038807, 0, 1.00999999, 0)
 		ValueBG.ZIndex = 5
 		ValueBG.Image = "http://www.roblox.com/asset/?id=6661850089"
@@ -380,12 +380,12 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 				dragging = false
 				local function Two()
 				local DraggingOff = TS:Create(SliderLine, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {BackgroundColor3 = Color3.fromRGB(255, 20, 25)})
-				local DraggingOffT = TS:Create(SliderLine, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {BackgroundTransparency = 1})
+				local DraggingOffT = TS:Create(SliderLine, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {BackgroundTransparency = 0})
 				DraggingOff:Play()
 				DraggingOffT:Play()	
 				end
 				local function One()
-				local Hide = TS:Create(ValueBG, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Position = UDim2.new(0, 0, 1, 0, 0)})
+				local Hide = TS:Create(ValueBG, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {Position = UDim2.new(0, 0, 1, 0)})
 				local Revert = TS:Create(ValueBG, TweenInfo.new(0.36, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {ImageColor3 = Color3.fromRGB(255, 255, 255)})
 				Revert:Play()	
 				wait(0.15)
