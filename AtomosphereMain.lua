@@ -132,7 +132,7 @@ function Atomos:NewTab(Name)
 		KeyBind.LayoutOrder = -3
 		KeyBind.Position = UDim2.new(0.659, 0, 0, 0)
 		KeyBind.Size = UDim2.new(0.330563664, 0, 1, 0)
-		KeyButton.AutoButtonColor = false
+		KeyBind.AutoButtonColor = false
 		KeyBind.ZIndex = -6
 		KeyBind.Font = Enum.Font.Highway
 		KeyBind.Text = key or ""
