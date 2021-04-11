@@ -240,20 +240,20 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 			Hover:Play()
 		end)
 		KeyBind.MouseLeave:Connect(function()
-			local Hover = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(40, 42, 54)})	
-			Hover:Play()
+			local Leave = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(40, 42, 54)})	
+			Leave:Play()
 		end)
 			--Detector
 		Detector.MouseLeave:Connect(function()
-			local Hover = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(40, 42, 54)})	
-			Hover:Play()
+			local Leave = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(40, 42, 54)})	
+			Leave:Play()
 			local SlideIn = TS:Create(KeyBind, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {Position = UDim2.new(0.659, 0, 0, 0)})
 			SlideIn:Play()
 		end)
 		--
 	end
 	-- ‹
-	function ElementsList:Slider(str, min, max, def, callback)
+	function ElementsList:Slider(str, min, max, def, callback) --[[Slider› ]]
 		local dragging = false
 		local Slider = Instance.new("TextButton")
 		local Detector = Instance.new("Frame")
@@ -287,7 +287,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		SliderBG.Name = "SliderBG"
 		SliderBG.Parent = Slider
 		SliderBG.BackgroundColor3 = Color3.fromRGB(40, 42, 54)
-		SliderBG.Position = UDim2.new(1, 0, 0, 0)
+		SliderBG.Position = UDim2.new(0.053, 0, 0, 0)
 		SliderBG.Size = UDim2.new(0.946282327, 0, 1, 0)
 		SliderBG.ZIndex = 1
 		UICorner.CornerRadius = UDim.new(0.200000003, 0)
@@ -344,6 +344,34 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		RatioConstraint.Name = "RatioConstraint"
 		RatioConstraint.Parent = ValueBG
 		RatioConstraint.AspectRatio = 1.426
+		--Effect
+		--Slider
+		Slider.MouseEnter:Connect(function()
+			local Hover = TS:Create(Slider, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(26, 30, 42)})	
+			Hover:Play()
+			local SlideOut = TS:Create(SliderBG, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {Position = UDim2.new(1, 0, 0, 0)})
+			SlideOut:Play()
+		end)
+		Slider.MouseLeave:Connect(function()
+			local Leave = TS:Create(Slider, TweenInfo.new(0.36, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(22, 25, 35)})	
+			Leave:Play()
+		end)
+		--Detector
+		Detector.MouseLeave:Connect(function()
+			local SlideIn = TS:Create(SliderBG, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {Position = UDim2.new(0.053, 0, 0, 0)})
+			SlideIn:Play()
+			local Leave = TS:Create(SliderBG, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(40, 42, 54)})	
+			Leave:Play()
+		end)
+		--SliderBG
+		SliderBG.MouseEnter:Connect(function()
+			local Hover = TS:Create(SliderBG, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(35, 37, 48)})	
+			Hover:Play()
+		end)
+		SliderBG.MouseLeave:Connect(function()
+			local Leave = TS:Create(SliderBG, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(40, 42, 54)})	
+			Leave:Play()
+		end)
 		--Callback
 		if min and max and def and callback then
 		SliderText.Text = tostring(def)
@@ -402,6 +430,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 			end
 			end)
 		end
+		
 	end
 	
 	return ElementsList
