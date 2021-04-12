@@ -125,7 +125,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 				HideMinimize:Play()
 				HideMinimize.Completed:Connect(function()
 					Close.ZIndex = 22
-					local ShowMaximize = TS:Create(Open, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {ImageTransparency = 0})
+					local ShowMaximize = TS:Create(Open, TweenInfo.new(0.15, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {ImageTransparency = 0})
 					ShowMaximize:Play()
 					ShowMaximize.Completed:Connect(function()
 						Open.ZIndex = 23
@@ -152,7 +152,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 				HideMaximize:Play()
 				HideMaximize.Completed:Connect(function()
 					Open.ZIndex = 22
-					local ShowMinimize = TS:Create(Close, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {ImageTransparency = 0})
+					local ShowMinimize = TS:Create(Close, TweenInfo.new(0.15, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {ImageTransparency = 0})
 					ShowMinimize:Play()
 					ShowMinimize.Completed:Connect(function()
 						Close.ZIndex = 23
