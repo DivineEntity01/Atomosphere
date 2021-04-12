@@ -4,7 +4,6 @@ local TS = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
 local Mouse = game.Players.LocalPlayer:GetMouse()
 local RunService = game:GetService("RunService")
-
 if game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.001) then
 	game:GetService("CoreGui"):WaitForChild("Atomosphere", 0.001):Destroy()
 end
@@ -28,6 +27,9 @@ local function CreateMain() --[[Atomosphere Main ›]]
 	local Atomosphere = Instance.new("ScreenGui")
 	Atomosphere.Name = "Atomosphere"
 	Atomosphere.Parent = game:GetService("CoreGui")
+	if getgenv().Ver then
+		print("0.7b")
+	end
 end
 CreateMain()
 --‹
@@ -111,7 +113,6 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 			Contract:Play()
 			Contract.Completed:Connect(function()
 				local CornerOne = TS:Create(Corner, TweenInfo.new(0.2, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {CornerRadius = UDim.new(1, 0)}):Play()
-				CornerOne:Play()
 				CornerOne.Completed:Connect(function()
 					for _,v in pairs(Tab:GetChildren()) do
 						if v:IsA("TextButton") then
