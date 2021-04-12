@@ -78,6 +78,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 	TabTitle.Text = Name or "NewTab".. TabCount
 	TabTitle.TextColor3 = Color3.fromRGB(188, 189, 208)
 	TabTitle.TextSize = 25.000
+	TabTitle.TextScaled = true
 	Close.Name = "Close"
 	Close.Parent = TabTitle
 	Close.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -109,13 +110,15 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 			local Contract = TS:Create(ButtonListing, TweenInfo.new(0.2, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {Padding = UDim.new(-1,0)})
 			Contract:Play()
 			Contract.Completed:Connect(function()
-				for _,v in pairs(Tab:GetChildren()) do
-					if v:IsA("TextButton") then
-						v.Visible = false
+				local CornerOne = TS:Create(Corner, TweenInfo.new(0.2, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {CornerRadius = UDim.new(1, 0)}):Play()
+				CornerOne:Play()
+				CornerOne.Completed:Connect(function()
+					for _,v in pairs(Tab:GetChildren()) do
+						if v:IsA("TextButton") then
+							v.Visible = false
+						end
 					end
-				end
-				wait(0.2)
-				TS:Create(Corner, TweenInfo.new(0.2, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {CornerRadius = UDim.new(1, 0)}):Play()
+				end)
 				local HideMinimize = TS:Create(Close, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {ImageTransparency = 1})
 				HideMinimize:Play()
 				HideMinimize.Completed:Connect(function()
@@ -141,7 +144,6 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 						v.Visible = true
 					end
 				end
-				wait(0.2)
 				local SlideDown = TS:Create(ButtonListing, TweenInfo.new(0.2, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {Padding = UDim.new(0,0)})
 				SlideDown:Play()
 				local HideMaximize = TS:Create(Open, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {ImageTransparency = 1})
