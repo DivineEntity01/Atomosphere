@@ -46,6 +46,9 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 	local Close = Instance.new("ImageButton")
 	local Open = Instance.new("ImageButton")
 	local Corner = Instance.new("UICorner")
+	Close.Image = "http://www.roblox.com/asset/?id=6672522633"
+	Tab.Image = "http://www.roblox.com/asset/?id=6657363591"
+	Open.Image = "http://www.roblox.com/asset/?id=6672528304"
 	Tab.Name = Name or "Tab".. TabCount
 	Tab.Parent = Main
 	Tab.BackgroundColor3 = Color3.fromRGB(22, 25, 35)
@@ -54,7 +57,6 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 	Tab.Position = UDim2.new(0.0173761956, 0, 0.0284167733, 0)
 	Tab.Size = UDim2.new(0.130321458, 0, 0.033829499, 0)
 	Tab.ZIndex = 20
-	Tab.Image = "http://www.roblox.com/asset/?id=6657363591"
 	Tab.BackgroundTransparency = 1
 	
 	ButtonListing.Name = "ButtonListing"
@@ -70,7 +72,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 	TabTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 	TabTitle.BackgroundTransparency = 1.000
 	TabTitle.Position = UDim2.new(0.13333334, 0, 0, 0)
-	TabTitle.Size = UDim2.new(0.733333349, 0, 1, 0)
+	TabTitle.Size = UDim2.new(0.707, 0, 1, 0)
 	TabTitle.ZIndex = 21
 	TabTitle.Font = Enum.Font.Highway
 	TabTitle.Text = Name or "NewTab".. TabCount
@@ -84,7 +86,6 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 	Close.Size = UDim2.new(0.227272734, 0, 1, 0)
 	Close.ZIndex = 23
 	Close.AutoButtonColor = false
-	Close.Image = "http://www.roblox.com/asset/?id=6672522633"
 	Close.ScaleType = Enum.ScaleType.Fit
 	Open.Name = "Open"
 	Open.Parent = TabTitle
@@ -95,7 +96,6 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 	Open.ZIndex = 22
 	Open.AutoButtonColor = false
 	Open.ImageTransparency = 1
-	Open.Image = "http://www.roblox.com/asset/?id=6672528304"
 	Open.ScaleType = Enum.ScaleType.Fit
 	Corner.CornerRadius = UDim.new(0, 0)
 	Corner.Name = "Corner"
@@ -106,7 +106,6 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 	end
 	Close.MouseButton1Click:Connect(function()
 		if not CVD then
-			CVD = true
 			local Contract = TS:Create(ButtonListing, TweenInfo.new(0.2, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {Padding = UDim.new(-1,0)})
 			Contract:Play()
 			Contract.Completed:Connect(function()
@@ -125,16 +124,45 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 					ShowMaximize:Play()
 					ShowMaximize.Completed:Connect(function()
 						Open.ZIndex = 23
+						CVD = true
 					end)
 				end)
 			end)
 		end
 	end)
 	
+	Open.MouseButton1Click:Connect(function()
+		if CVD then
+			local CornerZero = TS:Create(Corner, TweenInfo.new(0.2, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {CornerRadius = UDim.new(0, 0)})
+			CornerZero:Play()
+			CornerZero.Completed:Connect(function()
+				for _,v in pairs(Tab:GetChildren()) do
+					if v:IsA("TextButton") then
+						v.Visible = true
+					end
+				end
+				wait(0.2)
+				local SlideDown = TS:Create(ButtonListing, TweenInfo.new(0.2, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {Padding = UDim.new(0,0)})
+				SlideDown:Play()
+				local HideMaximize = TS:Create(Open, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {ImageTransparency = 1})
+				HideMaximize:Play()
+				HideMaximize.Completed:Connect(function()
+					Open.ZIndex = 22
+					local ShowMinimize = TS:Create(Close, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {ImageTransparency = 0})
+					ShowMinimize:Play()
+					ShowMinimize.Completed:Connect(function()
+						Close.ZIndex = 23
+						CVD = false
+					end)
+				end)
+			end)
+		end
+	end)
 	local ElementsList = {}
 	function ElementsList:Button(str, callback) --[[Normal Button› ]]
 		local Button = Instance.new("TextButton")
 		local Icon = Instance.new("ImageLabel")
+		Icon.Image = "http://www.roblox.com/asset/?id=6671933955"
 		Tab.BackgroundTransparency = 0 --Make the dark top part visible
 		--str
 		Button.Name = str or "ClickButton"
@@ -156,7 +184,6 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		Icon.BackgroundTransparency = 1.000
 		Icon.Position = UDim2.new(0.833333015, 0, 0.12987946, 0)
 		Icon.Size = UDim2.new(0.159999996, 0, 0.839999974, 0)
-		Icon.Image = "http://www.roblox.com/asset/?id=6671933955"
 		Icon.ZIndex = 9
 		Icon.ImageTransparency = 0.200
 		Icon.ScaleType = Enum.ScaleType.Fit
@@ -193,6 +220,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 	function ElementsList:KeyButton(str, key, change, callback) --[[Keybind Button› ]]
 		local KeyButton = Instance.new("TextButton")
 		local Icon = Instance.new("ImageLabel")
+		Icon.Image = "http://www.roblox.com/asset/?id=6672097066"
 		KeyButton.Name = str or "KeyButton"
 		KeyButton.Parent = Tab
 		KeyButton.BackgroundColor3 = Color3.fromRGB(22, 25, 35)
@@ -212,7 +240,6 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		Icon.BackgroundTransparency = 1.000
 		Icon.Position = UDim2.new(0.833333015, 0, -0.0800001025, 0)
 		Icon.Size = UDim2.new(0.173333541, 0, 1.12000012, 0)
-		Icon.Image = "http://www.roblox.com/asset/?id=6672097066"
 		Icon.ImageTransparency = 0.200
 		Icon.ZIndex = 9
 		Icon.ScaleType = Enum.ScaleType.Fit
@@ -366,6 +393,9 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		local Container = Instance.new("Frame")
 		local RatioConstraint = Instance.new("UIAspectRatioConstraint")
 		local Icon = Instance.new("ImageLabel")
+		SliderDrag.Image = "http://www.roblox.com/asset/?id=6661762894"
+		ValueBG.Image = "http://www.roblox.com/asset/?id=6661850089"
+		Icon.Image = "http://www.roblox.com/asset/?id=6672257305"
 		Slider.Name = str or "DragSlider"
 		Slider.Parent = Tab
 		Slider.BackgroundColor3 = Color3.fromRGB(22, 25, 35)
@@ -409,7 +439,6 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		SliderDrag.Size = UDim2.new(0.168660358, 0, 10, 0)
 		SliderDrag.ZIndex = 3
 		SliderDrag.AutoButtonColor = false
-		SliderDrag.Image = "http://www.roblox.com/asset/?id=6661762894"
 		Container.Name = "Container"
 		Container.Parent = SliderDrag
 		Container.BackgroundColor3 = Color3.fromRGB(40, 42, 54)
@@ -427,7 +456,6 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		ValueBG.Position = UDim2.new(-0.100355983, 0, 1, 0)
 		ValueBG.Size = UDim2.new(1.20038807, 0, 1.00999999, 0)
 		ValueBG.ZIndex = 6
-		ValueBG.Image = "http://www.roblox.com/asset/?id=6661850089"
 		ValueBG.ScaleType = Enum.ScaleType.Fit
 		SliderText.Name = "SliderText"
 		SliderText.Parent = ValueBG
@@ -451,7 +479,6 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		Icon.BackgroundTransparency = 1.000
 		Icon.Position = UDim2.new(0.833333015, 0, 0.12987946, 0)
 		Icon.Size = UDim2.new(0.159999996, 0, 0.839999974, 0)
-		Icon.Image = "http://www.roblox.com/asset/?id=6672257305"
 		Icon.ZIndex = 9
 		Icon.ImageTransparency = 0.200
 		Icon.ScaleType = Enum.ScaleType.Fit
