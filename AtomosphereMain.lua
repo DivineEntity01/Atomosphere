@@ -115,6 +115,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 						v.Visible = false
 					end
 				end
+				wait(0.2)
 				TS:Create(Corner, TweenInfo.new(0.2, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {CornerRadius = UDim.new(1, 0)}):Play()
 				local HideMinimize = TS:Create(Close, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {ImageTransparency = 1})
 				HideMinimize:Play()
