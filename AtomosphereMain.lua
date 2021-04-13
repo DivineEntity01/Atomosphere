@@ -34,7 +34,7 @@ CreateMain()
 --‹
 
 if getgenv().Ver == true then
-	print("0.98.4b")
+	print("0.98.1b")
 end
 
 --[[AtomosTab› ]]
@@ -63,7 +63,6 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 	Tab.Size = UDim2.new(0.130321458, 0, 0.033829499, 0)
 	Tab.ZIndex = 20
 	Tab.BackgroundTransparency = 1
-	
 	ButtonListing.Name = "ButtonListing"
 	ButtonListing.Parent = Tab
 	ButtonListing.HorizontalAlignment = Enum.HorizontalAlignment.Center
@@ -112,6 +111,13 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 	end
 	Close.MouseButton1Click:Connect(function()
 		if not CVD then
+			local Clicked = TS:Create(TabTitle, TweenInfo.new(0.2, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {TextColor3 = Color3.fromRGB(240, 238, 249)})
+			Clicked:Play()
+			local ButtonClick = TS:Create(Close, TweenInfo.new(0.2, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(229, 254, 255)})
+			ButtonClick:Play()
+			ButtonClick.Completed:Connect(function()
+				TS:Create(Close, TweenInfo.new(0.2, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(255, 255, 255)}):Play()
+			end)
 			local Contract = TS:Create(ButtonListing, TweenInfo.new(0.2, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {Padding = UDim.new(-1,0)})
 			Contract:Play()
 			Contract.Completed:Connect(function()
@@ -139,6 +145,13 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 	
 	Open.MouseButton1Click:Connect(function()
 		if CVD then
+			local Clicked = TS:Create(TabTitle, TweenInfo.new(0.2, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {TextColor3 = Color3.fromRGB(240, 238, 249)})
+			Clicked:Play()
+			local ButtonClick = TS:Create(Open, TweenInfo.new(0.2, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(229, 254, 255)})
+			ButtonClick:Play()
+			ButtonClick.Completed:Connect(function()
+				TS:Create(Open, TweenInfo.new(0.2, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(255, 255, 255)}):Play()
+			end)
 			local CornerZero = TS:Create(Corner, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {CornerRadius = UDim.new(0, 0)})
 			CornerZero:Play()
 			CornerZero.Completed:Connect(function()
