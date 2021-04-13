@@ -34,7 +34,7 @@ CreateMain()
 --‹
 
 if getgenv().Ver == true then
-	print("0.98.1b")
+	print("0.98.4b")
 end
 
 --[[AtomosTab› ]]
@@ -472,7 +472,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		local ValueBG = Instance.new("ImageLabel")
 		local SliderText = Instance.new("TextLabel")
 		local Container = Instance.new("Frame")
-		local RatioConstraint = Instance.new("UIAspectRatioConstraint")
+		local DragCons = Instance.new("UIAspectRatioConstraint")
 		local Icon = Instance.new("ImageLabel")
 		SliderDrag.Image = "http://www.roblox.com/asset/?id=6661762894"
 		ValueBG.Image = "http://www.roblox.com/asset/?id=6661850089"
@@ -552,9 +552,6 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		SliderText.TextScaled = true
 		SliderText.TextSize = 15.000
 		SliderText.TextWrapped = true
-		RatioConstraint.Name = "RatioConstraint"
-		RatioConstraint.Parent = ValueBG
-		RatioConstraint.AspectRatio = 1.426
 		Icon.Name = "Icon"
 		Icon.Parent = Slider
 		Icon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -564,6 +561,9 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		Icon.ZIndex = 9
 		Icon.ImageTransparency = 0.200
 		Icon.ScaleType = Enum.ScaleType.Fit
+		DragCons.Name = "DragCons"
+		DragCons.Parent = SliderDrag
+		DragCons.AspectRatio = 1.037
 		--Effect
 		--Slider
 		Slider.MouseEnter:Connect(function()
