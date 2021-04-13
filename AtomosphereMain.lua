@@ -254,7 +254,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		Off.ScaleType = Enum.ScaleType.Fit
 		Off.ZIndex = 9
 		On.Name = "On"
-		On.Parent = game.StarterGui.Atomosphere["Tab1"].Toggle
+		On.Parent = Toggle
 		On.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		On.BackgroundTransparency = 1.000
 		On.BorderSizePixel = 0
