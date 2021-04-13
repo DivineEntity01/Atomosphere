@@ -247,23 +247,23 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		Off.Parent = Toggle
 		Off.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Off.BackgroundTransparency = 1.000
-		Off.Position = UDim2.new(0.833333015, 0, 0.12987946, 0)
-		Off.Size = UDim2.new(0.159999996, 0, 0.839999974, 0)
-		Off.Image = "http://www.roblox.com/asset/?id=6675210579"
+		Off.Position = UDim2.new(0.839999914, 0, 0.0498793125, 0)
+		Off.Size = UDim2.new(0.139615685, 0, 0.830120921, 0)
+		Off.Image = "http://www.roblox.com/asset/?id=6675356457"
 		Off.ImageTransparency = 0.200
 		Off.ScaleType = Enum.ScaleType.Fit
-		Off.ZIndex = 10
+		Off.ZIndex = 9
 		On.Name = "On"
-		On.Parent = Toggle
+		On.Parent = game.StarterGui.Atomosphere["Tab1"].Toggle
 		On.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		On.BackgroundTransparency = 1.000
-		On.Position = UDim2.new(0.827878475, 0, 0.0399999991, 0)
-		On.Size = UDim2.new(0.172121614, 0, 1.00000012, 0)
-		On.Image = "http://www.roblox.com/asset/?id=6675227492"
-		On.ImageColor3 = Color3.fromRGB(166, 169, 188)
+		On.BorderSizePixel = 0
+		On.Position = UDim2.new(0.839999914, 0, 0.0498793125, 0)
+		On.Size = UDim2.new(0.139615685, 0, 0.830120921, 0)
+		On.Image = "http://www.roblox.com/asset/?id=6675344351"
 		On.ScaleType = Enum.ScaleType.Fit
 		On.ImageTransparency = 1
-		On.ZIndex = 9
+		On.ZIndex = 10
 		--Effects
 		--Button
 		Toggle.MouseEnter:Connect(function()
