@@ -34,7 +34,7 @@ CreateMain()
 --‹
 
 if getgenv().Ver == true then
-	print("0.7b")
+	print("0.98b")
 end
 
 --[[AtomosTab› ]]
@@ -115,15 +115,13 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 			local Contract = TS:Create(ButtonListing, TweenInfo.new(0.2, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {Padding = UDim.new(-1,0)})
 			Contract:Play()
 			Contract.Completed:Connect(function()
-				local CornerOne = TS:Create(Corner, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {CornerRadius = UDim.new(0.5, 0)})
-				CornerOne:Play()
-				CornerOne.Completed:Connect(function()
-					for _,v in pairs(Tab:GetChildren()) do
-						if v:IsA("TextButton") then
-							v.Visible = false
-						end
+				for _,v in pairs(Tab:GetChildren()) do
+					if v:IsA("TextButton") then
+						v.Visible = false
 					end
-				end)
+				end
+				local CornerOne = TS:Create(Corner, TweenInfo.new(0.35, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {CornerRadius = UDim.new(0.5, 0)})
+				CornerOne:Play()
 				local HideMinimize = TS:Create(Close, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {ImageTransparency = 1})
 				HideMinimize:Play()
 				HideMinimize.Completed:Connect(function()
