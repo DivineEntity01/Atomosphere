@@ -51,6 +51,39 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 	local Close = Instance.new("ImageButton")
 	local Open = Instance.new("ImageButton")
 	local Corner = Instance.new("UICorner")
+	-------------------------------------------------------------------------------------------------
+	--Draggable
+	local dragging
+	local dragInput
+	local dragStart
+	local startPos
+	local function update(input)
+		local delta = input.Position - dragStart
+		Tab = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+	end
+	Tab.InputBegan:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
+			dragging = true
+			dragStart = input.Position
+			startPos = Tab.Position
+			input.Changed:Connect(function()
+				if input.UserInputState == Enum.UserInputState.End then
+					dragging = false
+				end
+			end)
+		end
+	end)
+	Tab.InputChanged:Connect(function(input)
+		if input.UserInputType == Enum.UserInputType.MouseMovement or input.UserInputType == Enum.UserInputType.Touch then
+			dragInput = input
+		end
+	end)
+	UserInputService.InputChanged:Connect(function(input)
+		if input == dragInput and dragging then
+			update(input)
+		end
+	end)
+	-------------------------------------------------------------------------------------------------
 	Close.Image = "http://www.roblox.com/asset/?id=6672522633"
 	Tab.Image = "http://www.roblox.com/asset/?id=6657363591"
 	Open.Image = "http://www.roblox.com/asset/?id=6672528304"
