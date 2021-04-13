@@ -34,7 +34,7 @@ CreateMain()
 --‹
 
 if getgenv().Ver == true then
-	print("0.98.5b")
+	print("0.99b")
 end
 
 --[[AtomosTab› ]]
