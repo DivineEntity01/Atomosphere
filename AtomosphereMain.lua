@@ -34,7 +34,7 @@ CreateMain()
 --‹
 
 if getgenv().Ver == true then
-	print("0.98.1b")
+	print("0.98.5b")
 end
 
 --[[AtomosTab› ]]
@@ -145,7 +145,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 	
 	Open.MouseButton1Click:Connect(function()
 		if CVD then
-			local Clicked = TS:Create(TabTitle, TweenInfo.new(0.2, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {TextColor3 = Color3.fromRGB(240, 238, 249)})
+			local Clicked = TS:Create(TabTitle, TweenInfo.new(0.2, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {TextColor3 = Color3.fromRGB(188, 189, 208)})
 			Clicked:Play()
 			local ButtonClick = TS:Create(Open, TweenInfo.new(0.2, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {ImageColor3 = Color3.fromRGB(229, 254, 255)})
 			ButtonClick:Play()
