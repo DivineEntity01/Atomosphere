@@ -522,6 +522,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		SliderDrag.Size = UDim2.new(0.168660358, 0, 10, 0)
 		SliderDrag.ZIndex = 3
 		SliderDrag.AutoButtonColor = false
+		SliderDrag.ScaleType = Enum.ScaleType.Fit
 		Container.Name = "Container"
 		Container.Parent = SliderDrag
 		Container.BackgroundColor3 = Color3.fromRGB(40, 42, 54)
