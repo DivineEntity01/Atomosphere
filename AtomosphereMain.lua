@@ -34,7 +34,7 @@ CreateMain()
 --‹
 
 if getgenv().Ver == true then
-	print("0.99.1b")
+	print("0.99.2b")
 end
 
 --[[AtomosTab› ]]
@@ -113,7 +113,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 	local startPos
 	local function update(input)
 		local delta = input.Position - dragStart
-		Tab = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+		Tab.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
 	end
 	Tab.InputBegan:Connect(function(input)
 		if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
