@@ -15,6 +15,7 @@ end
 	▾Atomosphere Main
 		▾AtomosTab
 			▸Normal Button
+			▸Toggle
 			▸Keybind Button
 			▸Slider
 
@@ -114,13 +115,15 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 			local Contract = TS:Create(ButtonListing, TweenInfo.new(0.2, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {Padding = UDim.new(-1,0)})
 			Contract:Play()
 			Contract.Completed:Connect(function()
-				local CornerOne = TS:Create(Corner, TweenInfo.new(0.2, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {CornerRadius = UDim.new(1, 0)})
-				for _,v in pairs(Tab:GetChildren()) do
+				local CornerOne = TS:Create(Corner, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {CornerRadius = UDim.new(0.5, 0)})
+				CornerOne:Play()
+				CornerOne.Completed:Connect(function()
+					for _,v in pairs(Tab:GetChildren()) do
 						if v:IsA("TextButton") then
 							v.Visible = false
 						end
-				end
-				CornerOne:Play()
+					end
+				end)
 				local HideMinimize = TS:Create(Close, TweenInfo.new(0.35, Enum.EasingStyle.Sine, Enum.EasingDirection.In), {ImageTransparency = 1})
 				HideMinimize:Play()
 				HideMinimize.Completed:Connect(function()
@@ -138,7 +141,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 	
 	Open.MouseButton1Click:Connect(function()
 		if CVD then
-			local CornerZero = TS:Create(Corner, TweenInfo.new(0.2, Enum.EasingStyle.Cubic, Enum.EasingDirection.In), {CornerRadius = UDim.new(0, 0)})
+			local CornerZero = TS:Create(Corner, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.In), {CornerRadius = UDim.new(0, 0)})
 			CornerZero:Play()
 			CornerZero.Completed:Connect(function()
 				for _,v in pairs(Tab:GetChildren()) do
@@ -163,6 +166,8 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		end
 	end)
 	local ElementsList = {}
+	
+	
 	function ElementsList:Button(str, callback) --[[Normal Button› ]]
 		local Button = Instance.new("TextButton")
 		local Icon = Instance.new("ImageLabel")
@@ -221,6 +226,79 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		--
 	end
 	-- ‹
+	
+	function ElementsList:Toggle(str, callback) --[[Toggle› ]]
+		local Switch = false
+		local Toggle = Instance.new("TextButton")
+		local Off = Instance.new("ImageLabel")
+		local On = Instance.new("ImageLabel")
+		Toggle.Name = "Toggle"
+		Toggle.Parent = Tab
+		Toggle.BackgroundColor3 = Color3.fromRGB(22, 25, 35)
+		Toggle.BorderSizePixel = 0
+		Toggle.Position = UDim2.new(0, 0, 1, 0)
+		Toggle.Size = UDim2.new(1, 0, 1, 0)
+		Toggle.AutoButtonColor = false
+		Toggle.Font = Enum.Font.Highway
+		Toggle.Text = "Toggle"
+		Toggle.TextColor3 = Color3.fromRGB(188, 189, 208)
+		Toggle.TextSize = 20.000
+		Toggle.TextWrapped = true
+		Toggle.ZIndex = 8
+		Off.Name = "Toggle"
+		Off.Parent = Toggle
+		Off.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		Off.BackgroundTransparency = 1.000
+		Off.Position = UDim2.new(0.833333015, 0, 0.12987946, 0)
+		Off.Size = UDim2.new(0.159999996, 0, 0.839999974, 0)
+		Off.Image = "http://www.roblox.com/asset/?id=6675210579"
+		Off.ImageTransparency = 0.200
+		Off.ScaleType = Enum.ScaleType.Fit
+		Off.ZIndex = 10
+		On.Name = "On"
+		On.Parent = Toggle
+		On.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		On.BackgroundTransparency = 1.000
+		On.Position = UDim2.new(0.827878475, 0, 0.0399999991, 0)
+		On.Size = UDim2.new(0.172121614, 0, 1.00000012, 0)
+		On.Image = "http://www.roblox.com/asset/?id=6675227492"
+		On.ImageColor3 = Color3.fromRGB(166, 169, 188)
+		On.ScaleType = Enum.ScaleType.Fit
+		On.ImageTransparency = 1
+		On.ZIndex = 9
+		--Effects
+		--Button
+		Toggle.MouseEnter:Connect(function()
+			local Hover = TS:Create(Toggle, TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(26, 30, 42)})	
+			Hover:Play()
+		end)
+		Toggle.MouseLeave:Connect(function()
+			local Leeave = TS:Create(Toggle, TweenInfo.new(0.36, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {BackgroundColor3 = Color3.fromRGB(22, 25, 35)})	
+			Leeave:Play()
+		end)
+		--Callback
+		Toggle.MouseButton1Click:Connect(function()
+			if not Switch then
+				local OnVis = TS:Create(On, TweenInfo.new(0.35, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {ImageTransparency = 0})
+				local OffT = TS:Create(Off, TweenInfo.new(0.35, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {ImageTransparency = 0})
+				local Clicked = TS:Create(Toggle, TweenInfo.new(0.2, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {TextColor3 = Color3.fromRGB(240, 238, 249)})
+				OnVis:Play()
+				OffT:Play()
+				Clicked:Play()
+			else
+				local Clicked = TS:Create(Toggle, TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {TextColor3 = Color3.fromRGB(188, 189, 208)})
+				local OnVis = TS:Create(On, TweenInfo.new(0.35, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {ImageTransparency = 1})
+				local OffT = TS:Create(Off, TweenInfo.new(0.35, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {ImageTransparency = 0.2})
+				Clicked:Play()
+				OnVis:Play()
+				OffT:Play()
+			end
+			Switch = not Switch
+			pcall(callback, Switch)
+		end)
+	end
+	-- ‹
+	
 	function ElementsList:KeyButton(str, key, change, callback) --[[Keybind Button› ]]
 		local KeyButton = Instance.new("TextButton")
 		local Icon = Instance.new("ImageLabel")
@@ -384,6 +462,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		--
 	end
 	-- ‹
+	
 	function ElementsList:Slider(str, min, max, def, callback) --[[Slider› ]]
 		local dragging = false
 		local Slider = Instance.new("TextButton")
@@ -592,6 +671,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 		end
 		
 	end
+	-- ‹
 	
 	return ElementsList
 end
