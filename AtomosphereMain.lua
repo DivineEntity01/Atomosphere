@@ -272,6 +272,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 	-- ‹
 	
 	function ElementsList:Toggle(str, callback) --[[Toggle› ]]
+		Tab.BackgroundTransparency = 0
 		local Switch = false
 		local Toggle = Instance.new("TextButton")
 		local Off = Instance.new("ImageLabel")
@@ -344,6 +345,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 	-- ‹
 	
 	function ElementsList:KeyButton(str, key, change, callback) --[[Keybind Button› ]]
+		Tab.BackgroundTransparency = 0
 		local KeyButton = Instance.new("TextButton")
 		local Icon = Instance.new("ImageLabel")
 		Icon.Image = "http://www.roblox.com/asset/?id=6672097066"
@@ -508,6 +510,7 @@ function Atomos:NewTab(Name) --[[AtomosTab› ]]
 	-- ‹
 	
 	function ElementsList:Slider(str, min, max, def, callback) --[[Slider› ]]
+		Tab.BackgroundTransparency = 0
 		local dragging = false
 		local Slider = Instance.new("TextButton")
 		local Detector = Instance.new("Frame")
